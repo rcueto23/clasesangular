@@ -1,6 +1,15 @@
-<h4>Listado</h4>
+<h4>{{name}}</h4>
 
 <ul class="list-group">
-  <li class="list-group-item">Krillin - 500</li>
-  <li class="list-group-item">Goku -1.000</li>
+  <li
+    class="list-group-item d-flex justify-content-between"
+    *ngFor="let character of characterList; let i = index; let isFirst = first; let isLast = last; let isEven = even"
+    [ngClass]="{'list-group-item-primary': isEven, 'list-group-item-dark': !isEven}">
+    <div>
+      <span class="text-primary">{{i+1}}.</span> Nombre: {{character.name}} - Poder: {{character.power}}
+    </div>
+
+    <button class="btn btn-danger" (click)="deleteCharacter(character.id)">X</button>
+
+  </li>
 </ul>
