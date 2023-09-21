@@ -27,18 +27,15 @@ export class DbzService {
     }
   ]
 
-  onNewCharacter(character: Character): void {
+  addCharacter(character: Character): void {
 
     const newCharacter: Character = {id: uuid(), ...character}
 
     this.characters.push(newCharacter);
   }
 
-  // onDeleteCharacter(index: number){
-  //   this.characters.splice(index,1);
-  // }
-
   deleteCharacterById(id: string | undefined) {
+    if (!id) return
     this.characters = this.characters.filter(character => character.id !== id)
   }
 
